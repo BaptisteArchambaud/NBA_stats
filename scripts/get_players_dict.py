@@ -1,10 +1,10 @@
 from basketball_reference_web_scraper import client
 from basketball_reference_web_scraper.data import OutputType
 import os
-import pandas as pd
+import json
 
-def get_players_list(year):
-    '''Get players names into list'''
+def get_players_dict(year):
+    '''Get players names into a dictionary'''
     filename = os.path.abspath(f"./data/players_list_{year}.json")
 
     # if players names list does not exist in local folder then use API
@@ -13,6 +13,8 @@ def get_players_list(year):
                                      output_type=OutputType.JSON, 
                                      output_file_path=filename)
 
-    df = pd.read_json(filename)
-    players_list = df["slug"].unique().tolist() 
-    return(players_list)
+    with open(filename, 'r') as file:
+        players_data = json.load(file)
+
+    players_dict = {player['slug']: player['name'] for player in players_data}
+    return(players_dict)
