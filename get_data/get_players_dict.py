@@ -3,7 +3,7 @@ from basketball_reference_web_scraper.data import OutputType
 import os
 import json
 
-def get_players_dict(year):
+def get_players_dict(year: int) -> dict[str, str]:
     '''Get players names into a dictionary'''
     filename = os.path.abspath(f"./data/players_list_{year}.json")
 
