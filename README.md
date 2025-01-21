@@ -10,3 +10,5 @@ To use the app, follow these steps :
 3. Lauch the file app.py
 
 Project compatible with Python >= 3.12.7.
+
+![Alt text](get_data/data.png)

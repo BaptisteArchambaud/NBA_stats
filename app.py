@@ -41,7 +41,13 @@ def update_graph(players, statistic):
         all_data.append(player_data)
 
     players_data = pd.concat(all_data)
-    graph = px.line(players_data, x="date", y=statistic, color="player").update_layout(xaxis_title="Time")
+    graph = px.line(players_data, 
+                    x="date", 
+                    y=statistic, 
+                    color="player"
+        ).update_layout(xaxis_title="Time", 
+                        yaxis_title=statistics_to_display.get(statistic)
+        )
     return graph
 
 if __name__ == '__main__':
