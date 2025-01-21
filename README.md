@@ -11,4 +11,4 @@ To use the app, follow these steps :
 
 Project compatible with Python >= 3.12.7.
 
-![Alt text](get_data/data.png)
+![Alt text](get_data/app.png)
