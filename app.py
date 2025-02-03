@@ -4,8 +4,8 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 
-from get_data.get_players_dict import get_players_dict
-from get_data.get_player_stats import get_player_stats
+from functions.get_players_dict import get_players_dict
+from functions.get_player_stats import get_player_stats
 
 year = 2024
 players_dict = get_players_dict(year)
