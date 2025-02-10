@@ -7,7 +7,7 @@ import pandas as pd
 from functions.get_players_dict import get_players_dict
 from functions.get_player_stats import get_player_stats
 
-year_min = 2015
+year_min = 2020
 year_max = 2024
 players_dict = get_players_dict(year_min, year_max)
 statistics_to_display = {"points_scored":"Points scored", 
