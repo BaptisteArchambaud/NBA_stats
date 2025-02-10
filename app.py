@@ -41,13 +41,13 @@ def update_graph(players, statistic, years):
         # get data from all selected seasons
         for year in range(years[0], years[1]+1):
             # get data only if selected year is included in player career range
-            if year >= players_dict[player_id]["season_min"] & year <= players_dict[player_id]["season_max"]:
+            if year >= players_dict[player_id]["season_min"] and year <= players_dict[player_id]["season_max"]:
                 player_year_df = get_player_stats(player_id, year)
                 player_year_df["player"] = players_dict[player_id]["name"]
                 player_list.append(player_year_df)
-        player_df = pd.concat(player_list)
+        player_df = pd.concat(player_list) if player_list else pd.DataFrame()
         players_list.append(player_df)
-    players_df = pd.concat(players_list)
+    players_df = pd.concat(players_list) if players_list else pd.DataFrame()
 
     if players_df.empty:
         return px.line()
