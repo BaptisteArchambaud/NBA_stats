@@ -17,6 +17,13 @@ statistics_to_display = {"points_scored":"Points scored",
                          "offensive_rebounds":"Offensive rebounds", 
                          "steals":"Steals"}
 
+# range of months to remove in the plot during off-season
+rangebreaks = []
+for year in range(year_min, year_max+1):
+    start_date = pd.to_datetime(f'{year}-05-01')
+    end_date = pd.to_datetime(f'{year}-09-30')
+    rangebreaks.append(dict(values=pd.date_range(start=start_date, end=end_date)))
+
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
@@ -53,7 +60,10 @@ def update_graph(players, statistic, years):
         return px.line()
 
     graph = px.line(players_df, x="date", y=statistic, color="player"
-        ).update_layout(xaxis_title="Time", yaxis_title=statistics_to_display.get(statistic))
+                    ).update_layout(xaxis_title="Time", 
+                                    yaxis_title=statistics_to_display.get(statistic), 
+                                    xaxis_rangebreaks=rangebreaks
+                                    ).update_traces(connectgaps=True)
 
     return graph
 
