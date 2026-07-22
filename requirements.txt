@@ -26,7 +26,7 @@ nest-asyncio==1.6.0
 numpy==2.2.1
 packaging==24.2
 pandas==2.2.3
-pillow==12.2.0
+pillow==12.3.0
 plotly==5.24.1
 pyarrow==23.0.1
 pylance==0.22.0
